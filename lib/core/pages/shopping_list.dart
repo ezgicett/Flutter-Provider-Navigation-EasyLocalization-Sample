@@ -22,7 +22,12 @@ class ShoppingList extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.red),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
           centerTitle: true,
           title: Text(LocaleKeys.shoppingList.tr()),
           backgroundColor: const Color(0XFF2e3438),
@@ -59,6 +64,7 @@ class ShoppingList extends StatelessWidget {
                       itemCount: products.length,
                       itemBuilder: (context, index) {
                         return Card(
+                          shadowColor: Colors.red,
                           child: Column(
                             children: [
                               ListTile(

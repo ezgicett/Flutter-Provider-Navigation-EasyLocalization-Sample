@@ -1,12 +1,33 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import '../../translations/locale_keys.g.dart';
 import '../constants/navigation/navigation_constants.dart';
 import '../init/navigation/navigation_service.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
   SplashPage({Key? key}) : super(key: key);
-  String _value = 'EN';
+
+  @override
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  String _value = "EN";
+  @override
+  void initState() {
+    createBox();
+    super.initState();
+  }
+
+  void createBox() async {
+    var box = await Hive.openBox('language');
+    box.put('langPref', context.locale.toString());
+    setState(() {
+      _value = box.get('langPref').toUpperCase();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,12 +36,14 @@ class SplashPage extends StatelessWidget {
         backgroundColor: Colors.red,
         appBar: AppBar(
           title: const Text(''),
-          backgroundColor: Colors.red,
+          backgroundColor: const Color(0XFF2e3438),
           actions: [
             DropdownButton<String>(
+              dropdownColor: const Color(0XFF2e3438),
+              iconSize: 30,
               underline: Container(),
               style: const TextStyle(
-                  color: Colors.black, fontWeight: FontWeight.bold),
+                  color: Colors.white, fontWeight: FontWeight.bold),
               value: _value,
               items: const <DropdownMenuItem<String>>[
                 DropdownMenuItem(
@@ -102,7 +125,7 @@ class SplashPage extends StatelessWidget {
                       .navigateToPage(path: NavigationConstants.SHOPPING_PAGE);
                 },
                 icon: const Icon(Icons.arrow_circle_right),
-                color: Colors.black,
+                color: const Color(0XFF2e3438),
                 iconSize: 50,
               ),
             ],

@@ -13,17 +13,26 @@ class CartPage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            icon: const Icon(Icons.arrow_back, color: Colors.red),
             onPressed: () => Navigator.of(context).pop(),
           ),
           title: Text(LocaleKeys.shoppingCart.tr()),
-          backgroundColor: Colors.amber,
+          backgroundColor: const Color(0XFF2e3438),
         ),
         body: Consumer<Cart>(
           builder: (context, cart, child) => cart.itemsOnList.isEmpty
-              ? Text(LocaleKeys.noItemOnTheList.tr())
+              ? Center(
+                  child: Text(
+                    LocaleKeys.noItemOnTheList.tr(),
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                )
               : ListView.builder(
                   shrinkWrap: true,
                   itemCount: cart.itemsOnList.length,
@@ -46,6 +55,7 @@ class CartPage extends StatelessWidget {
                       // Show a red background as the item is swiped away.
                       background: Container(color: Colors.red),
                       child: Card(
+                        shadowColor: Colors.red,
                         child: Column(
                           children: [
                             ListTile(

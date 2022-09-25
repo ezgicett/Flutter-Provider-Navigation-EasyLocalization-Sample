@@ -2,6 +2,8 @@ import 'package:dice_app/providers/counter.dart';
 import 'package:dice_app/translations/codegen_loader.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:provider/provider.dart';
 
@@ -12,6 +14,7 @@ import 'providers/cart_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await Hive.initFlutter();
 
   runApp(
     MultiProvider(
