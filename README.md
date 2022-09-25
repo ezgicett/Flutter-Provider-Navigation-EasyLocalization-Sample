@@ -1,16 +1,3 @@
-# dice_app
+#Clean Folder Structure-Navigation Architecture-Use of Provider-Easy Localization.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Developed a simple application with Flutter. There is an example of using MultiProvider with Shopping List content. For routing, a navigation manager is used(Route Path, Route Manager & Route Service). Easy Localization package used for language translations.
